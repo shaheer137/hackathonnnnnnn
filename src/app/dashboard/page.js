@@ -144,8 +144,8 @@ export default function Dashboard() {
 
                     <div>
                         <h1 style={{ fontSize: 'large', marginTop: '25px', pdding: '10px', height: '40px', fontWeight: 'bolder', textDecoration: 'underline' }} >My Contacts </h1>
-                        {friends.map(item => {
-                            return <div style={{ border: '1px solid grey', borderRadius: '8px', margin: '10px', padding: '10px' }} >
+                        {friends.map((item, index) => {
+                            return <div key={index} style={{ border: '1px solid grey', borderRadius: '8px', margin: '10px', padding: '10px' }} >
                                 <h1> {item.displayName}</h1>
                             </div>
                         })}
@@ -206,40 +206,7 @@ export default function Dashboard() {
                                         Your browser does not support the video tag.
                                     </video>
                                 ) : null}
-                                {/* {post.map(item => {
-                        return <div style={{ marginTop: 10 }}>
-                            <div>
-                                <span style={{ display: 'flex' }}>
-                                    <img style={{ marginLeft: 5 }} width={30} src={userDetail.photoURL} />
-                                    <p style={{ fontSize: 18, color: 'black ', marginLeft: 5 }}>{userDetail.displayName}</p>
-                                </span>
-                                <h2 style={{ color: 'aaaaaa' }}>Description: {item.description}</h2>
-                                <img height={70} width='100%' src={item.imageUrl} />
-                                {post.map((post) => (
-                                    <div key={post.id} videoUrl={post.videoUrl} > </div>
-                                ))} */}
-                                {/* {file && Array.from(file).map((item, index) => {
-                                    return <div key={index}>
-                                        {isImage(item) && (
-                                            <Image
-                                                src={URL.createObjectURL(item)}
-                                                width={200}
-                                                height={200}
-                                                alt="uploading"
-                                            />
-                                        )}
-
-                                        {isVideo(item) && (
-                                            <ReactPlayer url={URL.createObjectURL(item)} controls={true} />
-                                        )}
-
-                                        {isAudio(item) && (
-                                            <ReactPlayer url={URL.createObjectURL(item)} controls={true} />
-                                        )}
-
-                                    </div>
-
-                                })} */}
+                               
                             </div>
                             <div style={{ borderTop: '2px solid grey', borderBottom: '2px solid grey', color: 'black', fontSize: 21 }}>
                                 <FontAwesomeIcon icon={faThumbsUp} /> Like
@@ -254,8 +221,8 @@ export default function Dashboard() {
             <div style={{ flex: 3, padding: '15px', backgroundColor: 'white', borderRadius: 6 }}>
                 <div className='request'>
                     <h1 style={{ fontSize: 'large', fontWeight: 'bolder', textAlign: 'left', borderBottom: '1px solid black' }}> You might like </h1>
-                    {friendRequest.map(item => {
-                        return (<div style={{ borderRadius: '10px', margin: '10px', padding: '10px' }} >
+                    {friendRequest.map((item, index) => {
+                        return (<div key={index} style={{ borderRadius: '10px', margin: '10px', padding: '10px' }} >
                             <h1 style={{ textAlign: 'left' }}>{item.displayName}</h1>
                             <button onClick={() => { updateStatus(item.id, 'accepted') }} style={{ padding: '10px', margin: '2px', fontSize: 'small', backgroundColor: 'deeppink', borderRadius: '5px', width: '90px' }}>Accept</button>
                             <button onClick={() => { updateStatus(item.id, 'decline') }} style={{ padding: '10px', margin: '2px', fontSize: 'small', backgroundColor: 'white', border: '1px solid black', borderRadius: '5px', width: '90px' }}>Ignore</button>
@@ -291,8 +258,8 @@ export default function Dashboard() {
 
             <div style={{ flex: 3, backgroundColor: 'pink', width: '80px' }}>
                 <h1 style={{ fontSize: 'large', margin: '10px', padding: '10px', height: '40px', fontWeight: 'bolder' }} >CHATS</h1>
-                {friends.map(item => {
-                    return <div onClick={(item) => handleClick(item)} style={{ border: '1px solid black', borderRadius: '10px', margin: '10px', padding: '10px', width: '280px', display: 'flex', justifyContent: 'space-between' }} >
+                {friends.map((item, index) => {
+                    return <div key={index} onClick={(item) => handleClick(item)} style={{ border: '1px solid black', borderRadius: '10px', margin: '10px', padding: '10px', width: '280px', display: 'flex', justifyContent: 'space-between' }} >
                         <h1> {item.displayName}</h1>
                         <FaEnvelope />
                     </div>
